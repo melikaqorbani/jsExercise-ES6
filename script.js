@@ -255,33 +255,37 @@ const data = [
   }
   console.log(getTotalReviewCount(book));
 
+  // map
+
+  const books = getBooks();
+
+  const x = [1,2,3,4,5].map((el)=>el*2);
+  console.log(x);
+
+  const titles = books.map((book) => book.title);
+
+  const essentionalData = books.map((book) => ({
+    title: book.title,
+    author: book.author,
+  }));
+
+  //filter
+  const longBooksWithMovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book)=>book.hasMovieAdaptation);
+
+  const adventureBooks = books.filter((books) =>books
+  .genres.includes("adventure") //it will create an array and u can map on a array
+).map((book)=>book.title);
 
 
+//reduce is so powerfull
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);// 0 is an accumulator
+
+//sort method
+const arr = [3,5,6,8,9];
+const sorted = arr.sort((a,b)=>a-b); //the arr itself will be muted, change. for prevention we will add slice:
+const sorted2 = arr.slice().sort((a,b)=>a-b); 
 
 
-
-
-
-
- 
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const sortedByPages = arr.slice().sort((a,b) => b.pages - a.pages); 
