@@ -289,3 +289,45 @@ const sorted2 = arr.slice().sort((a,b)=>a-b);
 
 
 const sortedByPages = arr.slice().sort((a,b) => b.pages - a.pages); 
+
+//immutable arrays:
+// add book object to array
+const newBook = {
+  id: 6,
+  title : "harry poter 6",
+  author : "j k rolling"
+};
+const booksAfterAdd = [...books, newBook]; // when we want to add a new object to an array
+
+// delete a book object from an array
+const booksAfterDelete = booksAfterAdd.filter(book => book.id !== 3); // to delete we use filler beacuse fillter make the array shorter چون فیلتر میکنه دیگه یه چیزو ازش :)
+
+// update a book object from an array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+   book.id === 1 ? {...book, pages : 1} : book
+  ); //to update we use map cause map create a new array with the same length
+
+
+
+
+
+
+//Fulfilled Promise 
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+.then(res=>res.json())
+.then(data=>console.log(data)); //not clean
+//"I Promise a Result!"
+//"Producing code" is code that can take some time
+//"Consuming code" is code that must wait for the result
+//A Promise is an Object that links Producing code and Consuming code
+
+//asyncAwait
+async function getTodos(){
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+  const data = await res.json();
+  console.log(data);
+  return data;
+}
+
+const todos = getTodos();
+console.log(todo); //promise { <pending> }
